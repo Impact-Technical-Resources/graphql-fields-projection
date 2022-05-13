@@ -101,4 +101,84 @@ describe('Testing removePathCollision function', () => {
     const output = removePathCollision(input);
     assert.deepEqual(output, expected);
   });
+
+  it('Test case 10', () => {
+    const input = [
+      'field1-1',
+      'field1-2',
+      'field1-3',
+
+      'field1-5',
+      'field1-6',
+      'field1-7',
+      'field1-8',
+      'field1-9',
+
+      'field1-14',
+      'field1-15',
+
+      'field1-3.child1',
+      'field1-3.child2',
+      'field1-3.child3',
+
+      'field1-3.child1',
+      'field1-3.child2',
+      'field1-3.child3',
+      'field1-3.child4',
+      'field1-3.child5',
+
+      'field1-3.child3.child1',
+      'field1-3.child3.child2',
+      'field1-3.child3.child3',
+
+      'field1-4.child1',
+      'field1-4.child2',
+      'field1-4.child3',
+      'field1-4.child4',
+      'field1-4.child5',
+
+      'field1-4.child3.child1',
+      'field1-4.child3.child2',
+      'field1-4.child3.child3',
+
+      'field1-10.child1.child1',
+      'field1-10.child2.child2',
+      'field1-10.child2.child2.child1',
+      'field1-10.child2.child2.child2',
+      'field1-10.child2.child3.child1',
+
+      'field1-11.child1.child3',
+      'field1-12.child2.child1',
+      'field1-13.child2.child3.child4',
+    ];
+    const expected = {
+      'field1-1': 1,
+      'field1-2': 1,
+      'field1-3': 1,
+      'field1-5': 1,
+      'field1-6': 1,
+      'field1-7': 1,
+      'field1-8': 1,
+      'field1-9': 1,
+      'field1-14': 1,
+      'field1-15': 1,
+
+      'field1-4.child1': 1,
+      'field1-4.child2': 1,
+      'field1-4.child3': 1,
+      'field1-4.child4': 1,
+      'field1-4.child5': 1,
+
+      'field1-10.child1.child1': 1,
+      'field1-10.child2.child2': 1,
+      'field1-10.child2.child3.child1': 1,
+
+      'field1-11.child1.child3': 1,
+      'field1-12.child2.child1': 1,
+      'field1-13.child2.child3.child4': 1,
+    };
+
+    const output = removePathCollision(input);
+    assert.deepEqual(output, expected);
+  });
 });
