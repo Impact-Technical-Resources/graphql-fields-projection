@@ -78,11 +78,24 @@ describe('Testing removePathCollision function', () => {
     assert.deepEqual(output, expected);
   });
   it('Test case 8', () => {
-    const input = ['id', 'metadata', 'user.info', 'user.info.firstName', 'user.info.secondaryContact.firstName', 'user.info.lastName'];
+    const input = ['id', 'metadata', 'user.info.firstName', 'user.info', 'user.info.secondaryContact.firstName', 'user.info.lastName'];
     const expected = {
       id: 1,
       metadata: 1,
       'user.info': 1,
+    };
+
+    const output = removePathCollision(input);
+    assert.deepEqual(output, expected);
+  });
+
+  it('Test case 9', () => {
+    const input = ['id', 'metadata', 'company.user.info.firstName', 'user.info.firstName', 'user.info', 'user.info.secondaryContact.firstName', 'user.info.lastName'];
+    const expected = {
+      id: 1,
+      metadata: 1,
+      'user.info': 1,
+      'company.user.info.firstName': 1,
     };
 
     const output = removePathCollision(input);
