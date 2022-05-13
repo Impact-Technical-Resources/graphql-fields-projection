@@ -114,7 +114,7 @@ const selectedFields2 = createSelectedFields(info, {
 
 ### Example 4: returnTypes
 
-By the default the return result will be an array of projected fields. But you can also get the **string** or **object**
+By the default the return result will be an **array** of projected fields. But you can also get the **string** or **object**
 
 ```graphql
 query user {
@@ -136,7 +136,7 @@ resolve(parent, args, context, info){
   const resultArray1 = createSelectedFields(info); // [ 'id', 'address', 'info.firstName', 'info.lastName' ]
   const resultArray2 = createSelectedFields(info, { returnType : 'array' }); // [ 'id', 'address', 'info.firstName', 'info.lastName' ]
   const resultString = createSelectedFields(info, { returnType : 'string' } ); // 'id address info.firstName info.lastName'
-  const resultObject = createSelectedFields(info); // { id: 1, address: 1, 'info.firstName': 1, 'info.lastName': 2 }
+  const resultObject = createSelectedFields(info, { returnType : 'object' }); // { id: 1, address: 1, 'info.firstName': 1, 'info.lastName': 1 }
 }
 ```
 
