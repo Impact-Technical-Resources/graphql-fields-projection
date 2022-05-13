@@ -167,6 +167,7 @@ query purchase {
 ```js
 const { createSelectedFields, createMergedSelectedFields } = require('graphql-fields-projection');
 
+// This is an example with Apollo Federation, but you can run with any resolvers
 __resolveReference(parent, context, info) {
   const { loaders } = context;
   const selectedFields = createSelectedFields(info);
