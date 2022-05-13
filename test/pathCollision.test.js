@@ -9,7 +9,7 @@ describe('Testing removePathCollision function', () => {
       user: 1,
     };
 
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
 
@@ -20,7 +20,7 @@ describe('Testing removePathCollision function', () => {
       'user.info': 1,
     };
 
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
 
@@ -31,7 +31,7 @@ describe('Testing removePathCollision function', () => {
       'user.info.firstName': 1,
       'user.info.lastName': 1,
     };
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
 
@@ -42,7 +42,7 @@ describe('Testing removePathCollision function', () => {
       user: 1,
     };
 
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
 
@@ -52,7 +52,7 @@ describe('Testing removePathCollision function', () => {
       id: 1,
       user: 1,
     };
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
 
@@ -63,7 +63,7 @@ describe('Testing removePathCollision function', () => {
       'user.info.firstName': 1,
       'user.info.secondaryContact.firstName': 1,
     };
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
 
@@ -74,7 +74,7 @@ describe('Testing removePathCollision function', () => {
       user: 1,
     };
 
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
   it('Test case 8', () => {
@@ -85,7 +85,7 @@ describe('Testing removePathCollision function', () => {
       'user.info': 1,
     };
 
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
 
@@ -98,7 +98,7 @@ describe('Testing removePathCollision function', () => {
       'company.user.info.firstName': 1,
     };
 
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
 
@@ -178,7 +178,7 @@ describe('Testing removePathCollision function', () => {
       'field1-13.child2.child3.child4': 1,
     };
 
-    const output = removePathCollision(input);
+    const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
 });
