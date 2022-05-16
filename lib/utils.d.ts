@@ -6,7 +6,7 @@
  * @returns fields projection
  * @author TrongPham KhoaNgo
  */
-export function removePathCollision(fields: [string], returnType?: string): any;
+export function removePathCollision(fields?: [string], returnType?: string): any;
 /**
  *
  * create the return value
