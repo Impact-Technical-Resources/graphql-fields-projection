@@ -104,6 +104,26 @@ describe('Testing removePathCollision function', () => {
 
   it('Test case 10', () => {
     const input = [
+      'id',
+      'user',
+      'user-name',
+      'user.info',
+      'user.info.firstName',
+      'user.info.secondaryContact.firstName',
+      'user.info.lastName',
+    ];
+    const expected = {
+      id: 1,
+      user: 1,
+      'user-name': 1,
+    };
+
+    const output = removePathCollision(input, 'object');
+    assert.deepEqual(output, expected);
+  });
+
+  it('Test case 11', () => {
+    const input = [
       'field1-1',
       'field1-2',
       'field1-3',
@@ -178,6 +198,13 @@ describe('Testing removePathCollision function', () => {
       'field1-13.child2.child3.child4': 1,
     };
 
+    const output = removePathCollision(input, 'object');
+    assert.deepEqual(output, expected);
+  });
+
+  it('Test case 12 - Empty input', () => {
+    const input = [];
+    const expected = {};
     const output = removePathCollision(input, 'object');
     assert.deepEqual(output, expected);
   });
