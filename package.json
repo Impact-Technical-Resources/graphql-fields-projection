@@ -1,6 +1,6 @@
 {
   "name": "graphql-fields-projection",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "lib/index.js",
   "directories": {
@@ -18,7 +18,22 @@
     "type": "git",
     "url": "git+https://github.com/Impact-Technical-Resources/graphql-fields-projection.git"
   },
-  "keywords": [],
+  "keywords": [
+    "graphql",
+    "graphql-fields",
+    "graphql-fields-projection",
+    "selected-fields",
+    "dataloader",
+    "merge-selected-fields",
+    "fields",
+    "database projection",
+    "projection",
+    "project",
+    "mongo",
+    "mongodb",
+    "sql",
+    "path collision restrictions"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
