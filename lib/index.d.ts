@@ -8,7 +8,7 @@
  * @param {string} [options.returnType='array'] must be either: string, array, or object. Default: array
  * @returns
  */
-export function createSelectedFields(queryInfo: any, options: {
+export function createSelectedFields(queryInfo: any, options?: {
     additionalFields?: [string];
     path?: string;
     returnType?: string;
@@ -22,7 +22,7 @@ export function createSelectedFields(queryInfo: any, options: {
  * @param {string} [options.returnType='array'] must be either: string, array, or object. Default: array
  * @returns
  */
-export function createMergedSelectedFields(batchingKeys: [string], options: {
+export function createMergedSelectedFields(batchingKeys: [string], options?: {
     additionalFields?: [string];
     returnType?: string;
 }): {
