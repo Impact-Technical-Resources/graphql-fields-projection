@@ -1,6 +1,17 @@
 # GraphQL Fields Projection
 
+- [Why using this?](#why-using-this)
+- [Install](#install)
+- [How to](#how-to)
+  - [Example 1: simplest usecase](#example-1-simplest-usecase)
+  - [Example 2: Get more fields](#example-2-get-more-fields)
+  - [Example 3: Get child path](#example-3-get-child-path)
+  - [Example 4: returnTypes](#example-4-returntypes)
+  - [Example 5: Using with Dataloader](#example-5-using-with-dataloader)
+
 This library create field projection from GraphQL query
+
+> NOTE: Since version 1.1.0 the default [returnType](#example-4-returntypes) is **string**
 
 ## Why using this?
 
@@ -44,7 +55,7 @@ query user {
 const { createSelectedFields } = require('graphql-fields-projection');
 
 resolve(parent, args, context, info){
-  const selectedFields = createSelectedFields(info); // [ 'id', 'address', 'info.firstName', 'info.lastName' ]
+  const selectedFields = createSelectedFields(info); // 'id address info.firstName info.lastName'
 }
 ```
 
@@ -70,7 +81,7 @@ const { createSelectedFields } = require('graphql-fields-projection');
 
 resolve(parent, args, context, info){
   // Now you like to get more fields for further resolve: `timezone`, and `info` object
-  const selectedFields = createSelectedFields(info, { additionalFields: ['info', 'address', 'timezone'] }); // [ 'id', 'info', 'timezone' ]
+  const selectedFields = createSelectedFields(info, { additionalFields: ['info', 'address', 'timezone'] }); // 'id info timezone'
 }
 ```
 
@@ -103,18 +114,20 @@ const { createSelectedFields } = require('graphql-fields-projection');
 
 resolve(parent, args, context, info){
   // Now you like to get selected fields of `buyer`
-  const selectedFields = createSelectedFields(info, { path: 'buyer' }); // [ 'id', 'address', 'info.firstName', 'info.lastName' ]
+  const selectedFields = createSelectedFields(info, { path: 'buyer' }); // 'id address info.firstName info.lastName'
 
   // OR with additionalFields
 const selectedFields2 = createSelectedFields(info, {
   path: 'buyer', additionalFields: ['info', 'address', 'timezone'],
-}); // [ 'id', 'info', 'timezone' ]
+}); // 'id info timezone'
 }
 ```
 
 ### Example 4: returnTypes
 
-By the default the return result will be an **array** of projected fields. But you can also get the **string** or **object**
+> NOTE: Since version 1.1.0 the default [returnType](#example-4-returntypes) is **string**
+
+By the default the return result will be an **string** of projected fields. But you can also get the **array** or **object**
 
 ```graphql
 query user {
@@ -133,9 +146,9 @@ query user {
 const { createSelectedFields } = require('graphql-fields-projection');
 
 resolve(parent, args, context, info){
-  const resultArray1 = createSelectedFields(info); // [ 'id', 'address', 'info.firstName', 'info.lastName' ]
-  const resultArray2 = createSelectedFields(info, { returnType : 'array' }); // [ 'id', 'address', 'info.firstName', 'info.lastName' ]
+  const resultString = createSelectedFields(info); // 'id address info.firstName info.lastName'
   const resultString = createSelectedFields(info, { returnType : 'string' } ); // 'id address info.firstName info.lastName'
+  const resultArray2 = createSelectedFields(info, { returnType : 'array' }); // [ 'id', 'address', 'info.firstName', 'info.lastName' ]
   const resultObject = createSelectedFields(info, { returnType : 'object' }); // { id: 1, address: 1, 'info.firstName': 1, 'info.lastName': 1 }
 }
 ```
@@ -170,7 +183,7 @@ const { createSelectedFields, createMergedSelectedFields } = require('graphql-fi
 // This is an example with Apollo Federation, but you can run with any resolvers
 __resolveReference(parent, context, info) {
   const { loaders } = context;
-  const selectedFields = createSelectedFields(info);
+  const selectedFields = createSelectedFields(info, { returnType : 'array' });
   return loaders.product.load(JSON.stringify({ id: parent.id, selectedFields }));
 }
 

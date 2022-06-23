@@ -4,8 +4,8 @@
  * @param {Object} queryInfo query info
  * @param {Object} options options
  * @param {[String]} [options.additionalFields=[]] additional fields to get
- * @param {string} [options.path=''] child path of query
- * @param {string} [options.returnType='array'] must be either: string, array, or object. Default: array
+ * @param {String} [options.path=''] child path of query
+ * @param {String} [options.returnType='string'] must be either: string, array, or object. Default: string
  * @returns
  */
 export function createSelectedFields(queryInfo: any, options?: {
@@ -19,7 +19,7 @@ export function createSelectedFields(queryInfo: any, options?: {
  * @param {[String]} batchingKeys dataloader batching keys. Each element must be a JSON string
  * @param {Object} options options
  * @param {[String]} [options.additionalFields=[]] additional fields to get
- * @param {string} [options.returnType='array'] must be either: string, array, or object. Default: array
+ * @param {String} [options.returnType='string'] must be either: string, array, or object. Default: string
  * @returns
  */
 export function createMergedSelectedFields(batchingKeys: [string], options?: {
